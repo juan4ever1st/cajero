@@ -1,5 +1,5 @@
 package Cajero;
-
+//https://es.stackoverflow.com/questions/71346/c%C3%B3mo-convertir-un-string-en-int-en-java
 public class Validar {
     
     public static boolean isNum(String a){//metodo para validar si es un numero        

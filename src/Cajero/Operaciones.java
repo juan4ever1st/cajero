@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;//importacion necesaria para el uso de los cuadro
 
 public class Operaciones {
     
-    //variables globales para que puedan ser modificados de ser necesario
+    //variables globales para que puedan ser modificadas de ser necesario
     int saldo=90000; //saldo inicial
     String clave="1234";//clave predeterminada
     
@@ -18,16 +18,20 @@ public class Operaciones {
                 op = Integer.parseInt(ax);
                 switch(op){
                     case 1:
-                        verSal(); break; 
+                        verSal();
+                        break; 
                     case 2:
-                        depo(); break;
+                        depo();
+                        break;
                     case 3:
-                        retirar(); break;
+                        retirar();
+                        break;
                     case 4: 
-                        chanPass(); break;
+                        cambiarPass();
+                        break;
                 }    
             }else{
-                JOptionPane.showMessageDialog(null, "Digite una opcion valida....");
+                JOptionPane.showMessageDialog(null, "Digite una opcion valida.");
             }                    
         }while(op !=5);//cuando se digita 5 se finaliza la aplicacion        
     }
@@ -48,14 +52,14 @@ public class Operaciones {
                 JOptionPane.showMessageDialog(null, "No es posible depositar ese importe!!!");
             }                    
         }else{
-             JOptionPane.showMessageDialog(null, "Ingrese un monto a depositar!!!");
+             JOptionPane.showMessageDialog(null, "Ingrese un monto a depositar:");
         }
     }
     
     public void retirar(){//metodo para retirar del saldo
         
         String ax;                
-        ax = JOptionPane.showInputDialog(null, "Digite su clave.... ");
+        ax = JOptionPane.showInputDialog(null, "Digite su clave: ");
         
         if(ax==null){//validacion por si se selecciona cancelar del cuadro de dialogo y evitar errores 
             
@@ -106,17 +110,17 @@ public class Operaciones {
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "La clave ingresada es incorrecta....");
+                    JOptionPane.showMessageDialog(null, "La clave ingresada es incorrecta.");
                 }
             }
         }              
     }
    
-    public void chanPass(){//metodo para cambiar la contraseña
+    public void cambiarPass(){//metodo para cambiar la contraseña
         
         String ax, cl;
         
-        ax = JOptionPane.showInputDialog(null, "Digite su clave....");
+        ax = JOptionPane.showInputDialog(null, "Digite su clave actual....");
         if(ax!=null){
             if(!ax.equals("")){            
                 if(ax.equals(clave)){//si la clave digitada coincide con la clave que existe
@@ -124,13 +128,13 @@ public class Operaciones {
                    if(cl!=null){
                        if(cl.length()>3){//si el tamaño de la nueva contraseña tiene mas de 3 caracteres se puede cambiar
                             ax=null;//se elimina el valor contenido con anterioridad de la variable
-                            ax="Su anterior clave es:"+clave;
+                            ax="Su anterior clave es: "+clave;
                             clave=cl;
-                            ax+="nSu nueva clave es: "+clave; 
+                            ax+="\nSu nueva clave es: "+clave; 
                             JOptionPane.showMessageDialog(null, ax);
                        }
                        else{
-                            JOptionPane.showMessageDialog(null, "La clave que desea cambiar es muy corta...");
+                            JOptionPane.showMessageDialog(null, "La clave ingresada es muy corta...(Debe contener al menos 4 carateres)");
                        }
                    }                   
                 }
