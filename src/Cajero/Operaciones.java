@@ -33,7 +33,7 @@ public class Operaciones {
     }
     
     public void verSal(){//metodo para ver el saldo de la cuenta
-        JOptionPane.showMessageDialog(null, "Tu saldo a la fecha es: "+saldo);
+        JOptionPane.showMessageDialog(null, "DISPONIBLE: AR$ "+ saldo);
     }
     
     public void depo(){//metodo para realizar un deposito
