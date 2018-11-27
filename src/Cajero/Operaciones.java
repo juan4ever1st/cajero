@@ -13,14 +13,14 @@ public class Operaciones {
         String ax;
         int op=0;        
         do{
-            ax = JOptionPane.showInputDialog(null, "1. Saldo n 2. Consignar n 3. Retirar n 4. Cambiar Clave n 5. Salir");
+            ax = JOptionPane.showInputDialog(null, "1. SALDO \n 2. DEPOSITAR \n 3. RETIRAR \n 4. CAMBIAR CLAVE \n 5. SALIR");
             if(ax!=null && Validar.isNum(ax)){//validacion para el menu
                 op = Integer.parseInt(ax);
                 switch(op){
                     case 1:
                         verSal(); break; 
                     case 2:
-                        consig(); break;
+                        depo(); break;
                     case 3:
                         retirar(); break;
                     case 4: 
@@ -36,19 +36,19 @@ public class Operaciones {
         JOptionPane.showMessageDialog(null, "Tu saldo a la fecha es: "+saldo);
     }
     
-    public void consig(){//metodo para realizar la consignacion
-        String ax; int consig=0;        
+    public void depo(){//metodo para realizar un deposito
+        String ax; int deposito=0;        
         
-        ax = JOptionPane.showInputDialog(null, "Cuanto desea consginar? ");
+        ax = JOptionPane.showInputDialog(null, "Cuanto desea depositar? ");
         if((ax!=null) && !ax.equals("") && Validar.isNum(ax)){//triple validacion, si se ingreso algo, y si es numero lo ingresado            
-            consig = Integer.parseInt(ax);
-            if(consig>0){//si el valor a consignar es mayor que 0 se realiza la consignacion
-                saldo+=consig;//se suma el nuevo valor al saldo
+            deposito = Integer.parseInt(ax);
+            if(deposito > 0){//si el valor a consignar es mayor que 0 se realiza la consignacion
+                saldo+=deposito;//se suma el nuevo valor al saldo
             }else{
-                JOptionPane.showMessageDialog(null, "Consigne una cantidad mayor a 0 !!!");
+                JOptionPane.showMessageDialog(null, "No es posible depositar ese importe!!!");
             }                    
         }else{
-             JOptionPane.showMessageDialog(null, "Ingrese un valor a consignar!!!");
+             JOptionPane.showMessageDialog(null, "Ingrese un monto a depositar!!!");
         }
     }
     
@@ -62,38 +62,38 @@ public class Operaciones {
         }else{
             if(!ax.equals("")){            
                 if(ax.equals(clave)){//si la clave digitada coincide con la clave
-                    ax = JOptionPane.showInputDialog(null, "a. 5000 n b. 10.000 n c. 20.000 n d. 50.000n e. 100.000n f. Ingresar valor",
+                    ax = JOptionPane.showInputDialog(null, "A. 500 \n B. 1.000 \n C. 2.000 \n D. 5.000 \n E. 10.000 \n F. INGRESAR MONTO",
                             "CANTIDAD A RETIRAR", JOptionPane.INFORMATION_MESSAGE);
                     if(ax!=null){
                         if(!ax.equals("")){
                             switch(ax){
                                 case "a":
-                                    if((saldo-5000>=10000)){//se verifica si al retirar queda con un saldo minimo de 10.000
-                                        saldo-=5000;
+                                    if((saldo-500>=10000)){//se verifica si al retirar queda con un saldo minimo de 10.000
+                                        saldo-=500;
                                     }                            
                                     break;
                                 case "b":
-                                   if((saldo-10000>=10000)){//se verifica si al retirar queda con un saldo minimo de 10.000
-                                        saldo-=10000;
+                                   if((saldo-1000>=10000)){//se verifica si al retirar queda con un saldo minimo de 10.000
+                                        saldo-=1000;
                                     }
                                     break;
                                 case "c":
-                                   if((saldo-20000>=10000)){//se verifica si al retirar queda con un saldo minimo de 10.000
-                                        saldo-=20000;
+                                   if((saldo-2000>=10000)){//se verifica si al retirar queda con un saldo minimo de 10.000
+                                        saldo-=2000;
                                     }
                                     break;
                                 case "d":
-                                    if((saldo-50000>=10000)){//se verifica si al retirar queda con un saldo minimo de 10.000
-                                        saldo-=50000;
+                                    if((saldo-5000>=10000)){//se verifica si al retirar queda con un saldo minimo de 10.000
+                                        saldo-=5000;
                                     }
                                     break;
                                 case "e":
-                                    if((saldo-100000>=10000)){//se verifica si al retirar queda con un saldo minimo de 10.000
-                                        saldo-=100000;
+                                    if((saldo-10000>=10000)){//se verifica si al retirar queda con un saldo minimo de 10.000
+                                        saldo-=10000;
                                     }
                                     break;
                                 case "f":
-                                    ax = JOptionPane.showInputDialog(null, "Digite el valor a retirar: ");
+                                    ax = JOptionPane.showInputDialog(null, "Ingrese el monto a retirar: ");
                                     if(!ax.equals("") && Validar.isNum(ax) && (Integer.parseInt(ax)>0) && (saldo-Integer.parseInt(ax)>=10000) ){
                                         saldo-= Integer.parseInt(ax);
                                     }
@@ -106,7 +106,7 @@ public class Operaciones {
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "La clave ingresada no coincide....");
+                    JOptionPane.showMessageDialog(null, "La clave ingresada es incorrecta....");
                 }
             }
         }              
